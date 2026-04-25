@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -13,7 +12,6 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () =>
       import('./components/home/home.component').then((m) => m.HomeComponent),
-    canActivate: [authGuard],
   },
   {
     path: 'tasks',
@@ -21,13 +19,11 @@ export const routes: Routes = [
       import('./components/glasses/glasses.component').then(
         (m) => m.TasksComponent
       ),
-    canActivate: [authGuard]
   },
   {
     path: 'team',
     loadComponent: () =>
       import('./components/team/team.component').then((m) => m.TeamComponent),
-    canActivate: [authGuard]
   },
   {
     path: 'lvl/:lvl',
@@ -35,19 +31,16 @@ export const routes: Routes = [
       import(
         './components/team/components/level/account/account.component'
       ).then((c) => c.AccountComponent),
-      canActivate: [authGuard]
   },
   {
     path: 'vip',
     loadComponent: () =>
       import('./components/vip/vip.component').then((m) => m.VipComponent),
-    canActivate: [authGuard]
   },
   {
     path: 'me',
     loadComponent: () =>
       import('./components/me/me.component').then((m) => m.MeComponent),
-    canActivate: [authGuard]
   },
   {
     path: 'recharge',
@@ -55,7 +48,6 @@ export const routes: Routes = [
       import('./common/recharge/recharge.component').then(
         (m) => m.RechargeComponent
       ),
-      canActivate: [authGuard]
   },
   {
     path: 'withdraw',
@@ -63,7 +55,6 @@ export const routes: Routes = [
       import('./common/withdraw/withdraw.component').then(
         (m) => m.WithdrawComponent
       ),
-      canActivate: [authGuard]
   },
   {
     path: 'account',
@@ -71,7 +62,6 @@ export const routes: Routes = [
       import('./components/me/account/account.component').then(
         (m) => m.AccountComponent
       ),
-      canActivate: [authGuard]
   },
   {
     path: 'password',
@@ -79,7 +69,6 @@ export const routes: Routes = [
       import('./components/me/changepass/changepass.component').then(
         (m) => m.ChangepassComponent
       ),
-      canActivate: [authGuard]
   },
   {
     path: 'deposit/:token',
@@ -87,23 +76,22 @@ export const routes: Routes = [
       import('./common/deposit/deposit.component').then(
         (m) => m.DepositComponent
       ),
-      canActivate: [authGuard]
-  },{
+  },
+{
     path: 'nequi/:token',
     loadComponent: ()=>
-      import('./common/deposit/address/nequi-confirmation/nequi-confirmation.component').then(
-        (m) => m.NequiConfirmationComponent
-      ),
-      canActivate: [authGuard]
+    import('./common/deposit/address/nequi-confirmation/nequi-confirmation.component').then(
+      (m) => m.NequiConfirmationComponent
+    ),
   },
   {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
 ];
